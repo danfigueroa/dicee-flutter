@@ -18,6 +18,33 @@ void main() {
 class DicePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container();
+
+      var leftDiceNumber = 6;
+
+    // Centralizando os widgets com o Center
+    return Center(
+      // Widget para criar uma linha que conterá os futuros widgets
+      child: Row(
+        children: <Widget>[
+          // Dado 1 feito com Expanded para adequar ao tamanho
+          Expanded(
+            child: FlatButton(
+              onPressed: (){
+                print('Dado 1 foi clicado');
+              },
+              child: Image.asset('images/dice$leftDiceNumber.png'),
+            ),
+          ),
+
+            // Dado 2
+            Expanded(
+              child: FlatButton(
+                child: Image.asset('images/dice2.png'),
+              ),
+            )
+        ],
+      ),
+    );
   }
 }
+
