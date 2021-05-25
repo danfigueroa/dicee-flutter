@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:math';
 
 void main() {
   return runApp(
@@ -7,7 +8,7 @@ void main() {
         backgroundColor: Colors.green[800],
         appBar: AppBar(
           title: Text('Dicee by Daniel Figueroa'),
-          backgroundColor: Colors.green,
+          backgroundColor: Colors.green[800],
         ),
         body: DicePage(),
       ),
@@ -21,10 +22,19 @@ class DicePage extends StatefulWidget {
 }
 
 class _DicePageState extends State<DicePage> {
+  int leftDiceNumber = 1;
+  int rightDiceNumber = 1;
+
+// função para rolar os dados simultâneamente com valores randômicos
+  void diceRoll() {
+    setState(() {
+      leftDiceNumber = Random().nextInt(6) + 1;
+      rightDiceNumber = Random().nextInt(6) + 1;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    int leftDiceNumber = 6;
-
     // Centralizando os widgets com o Center
     return Center(
       // Widget para criar uma linha que conterá os futuros widgets
@@ -34,7 +44,7 @@ class _DicePageState extends State<DicePage> {
           Expanded(
             child: TextButton(
               onPressed: () {
-                print('Dado 1 foi clicado');
+                diceRoll();
               },
               child: Image.asset('images/dice$leftDiceNumber.png'),
             ),
@@ -44,9 +54,9 @@ class _DicePageState extends State<DicePage> {
           Expanded(
             child: TextButton(
               onPressed: () {
-                print('Dado 1 foi clicado');
+                diceRoll();
               },
-              child: Image.asset('images/dice2.png'),
+              child: Image.asset('images/dice$rightDiceNumber.png'),
             ),
           )
         ],
