@@ -4,9 +4,9 @@ void main() {
   return runApp(
     MaterialApp(
       home: Scaffold(
-        backgroundColor: Colors.green,
+        backgroundColor: Colors.green[800],
         appBar: AppBar(
-          title: Text('Dicee'),
+          title: Text('Dicee by Daniel Figueroa'),
           backgroundColor: Colors.green,
         ),
         body: DicePage(),
@@ -15,11 +15,15 @@ void main() {
   );
 }
 
-class DicePage extends StatelessWidget {
+class DicePage extends StatefulWidget {
+  @override
+  _DicePageState createState() => _DicePageState();
+}
+
+class _DicePageState extends State<DicePage> {
   @override
   Widget build(BuildContext context) {
-
-      var leftDiceNumber = 6;
+    int leftDiceNumber = 6;
 
     // Centralizando os widgets com o Center
     return Center(
@@ -28,23 +32,25 @@ class DicePage extends StatelessWidget {
         children: <Widget>[
           // Dado 1 feito com Expanded para adequar ao tamanho
           Expanded(
-            child: FlatButton(
-              onPressed: (){
+            child: TextButton(
+              onPressed: () {
                 print('Dado 1 foi clicado');
               },
               child: Image.asset('images/dice$leftDiceNumber.png'),
             ),
           ),
 
-            // Dado 2
-            Expanded(
-              child: FlatButton(
-                child: Image.asset('images/dice2.png'),
-              ),
-            )
+          // Dado 2
+          Expanded(
+            child: TextButton(
+              onPressed: () {
+                print('Dado 1 foi clicado');
+              },
+              child: Image.asset('images/dice2.png'),
+            ),
+          )
         ],
       ),
     );
   }
 }
-
